@@ -1,0 +1,18 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}Services - Meditation Pictures{% endblock %}
+
+{% block content %}
+<h1 class="text-4xl font-bold mb-8">Our Services</h1>
+<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+  {% for service in services %}
+    <div class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition">
+      <h2 class="text-2xl font-semibold mb-4">{{ service.title }}</h2>
+      <p class="text-gray-700">{{ service.description }}</p>
+    </div>
+  {% empty %}
+    <p>No services available now.</p>
+  {% endfor %}
+</div>
+{% endblock %}

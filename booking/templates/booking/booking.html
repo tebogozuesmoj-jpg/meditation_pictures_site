@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Book a Session{% endblock %}
+
+{% block content %}
+<h1 class="text-3xl font-bold mb-6">Book a Session</h1>
+
+{% if messages %}
+  {% for message in messages %}
+    <p class="mb-4 p-4 bg-green-100 text-green-800 rounded">{{ message }}</p>
+  {% endfor %}
+{% endif %}
+
+<form method="post" class="max-w-md">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="bg-blue-600 text-white rounded px-6 py-2 hover:bg-blue-700 transition">Book Now</button>
+</form>
+
+<script>
+  const bookedDates = JSON.parse(document.getElementById('booked-dates').textContent);
+  const dateInput = document.querySelector('input[type="date"]');
+  if(dateInput) {
+    dateInput.min = "{{ min_date }}";
+    dateInput.addEventListener('input', () => {
+      if(bookedDates.includes(dateInput.value)) {
+        alert("This date is already fully booked. Please choose another date.");
+        dateInput.value = '';
+      }
+    });
+  }
+</script>
+
+{{ booked_dates|json_script:"booked-dates" }}
+{% endblock %}

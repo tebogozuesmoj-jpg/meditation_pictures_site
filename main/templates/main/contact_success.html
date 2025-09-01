@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Message Sent - Meditation Pictures{% endblock %}
+
+{% block content %}
+<div class="contact-success-section">
+    <div class="container">
+        <h1>Thank you, {{ name }}!</h1>
+        <p>Your message has been sent successfully. We will get back to you soon.</p>
+        <a href="{% url 'main:home' %}">Return to Home</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,90 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}Meditation Pictures{% endblock %}</title>
+
+  <!-- Tailwind CSS -->
+  <link href="{% static 'src/output.css' %}" rel="stylesheet" />
+
+  <!-- Font Awesome CDN for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  {% block extra_head %}
+  {% endblock %}
+</head>
+<body class="bg-gray-50 font-sans leading-normal tracking-normal">
+
+<header>
+  <nav class="bg-gray-900 text-white shadow-md">
+    <div class="container mx-auto flex justify-between items-center p-4">
+      <a href="{% url 'main:home' %}" class="text-2xl font-bold hover:text-gray-300">Meditation Pictures</a>
+
+      <!-- Mobile menu button -->
+      <button id="menu-btn" class="md:hidden focus:outline-none" aria-label="Toggle menu">
+        <svg class="w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+
+      <ul id="menu" class="hidden md:flex space-x-6 text-lg items-center">
+        <li><a href="{% url 'main:home' %}" class="hover:text-gray-300">Home</a></li>
+        <li><a href="{% url 'main:services' %}" class="hover:text-gray-300">Services</a></li>
+        <li><a href="{% url 'main:portfolio' %}" class="hover:text-gray-300">Portfolio</a></li>
+        <li><a href="{% url 'main:about' %}" class="hover:text-gray-300">About</a></li>
+        <li><a href="{% url 'main:contact' %}" class="hover:text-gray-300">Contact</a></li>
+        <li><a href="{% url 'booking' %}" class="hover:text-gray-300">Book</a></li>
+
+        {% if user.is_authenticated %}
+          <li class="ml-4">Welcome, {{ user.username }}!</li>
+          <li>
+            <form method="post" action="{% url 'logout' %}">
+              {% csrf_token %}
+              <button type="submit" class="hover:text-gray-300">Logout</button>
+            </form>
+          </li>
+        {% else %}
+          <li><a href="{% url 'login' %}" class="hover:text-gray-300">Login</a></li>
+          <li><a href="{% url 'register' %}" class="hover:text-gray-300">Register</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<main class="container mx-auto px-4 py-8">
+  {% block content %}
+  {% endblock %}
+</main>
+
+<footer class="bg-gray-900 text-white p-4 mt-10">
+  <div class="container mx-auto flex justify-center space-x-6">
+    <a href="https://facebook.com/YourPage" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-400" aria-label="Facebook">
+      <i class="fab fa-facebook-f fa-2x"></i>
+    </a>
+    <a href="https://twitter.com/YourProfile" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-400" aria-label="Twitter">
+      <i class="fab fa-twitter fa-2x"></i>
+    </a>
+    <a href="https://instagram.com/YourProfile" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-400" aria-label="Instagram">
+      <i class="fab fa-instagram fa-2x"></i>
+    </a>
+    <a href="https://linkedin.com/in/YourProfile" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-400" aria-label="LinkedIn">
+      <i class="fab fa-linkedin-in fa-2x"></i>
+    </a>
+  </div>
+</footer>
+
+<script>
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('menu');
+
+  btn.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+</script>
+
+</body>
+</html>
