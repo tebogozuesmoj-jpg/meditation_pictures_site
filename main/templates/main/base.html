@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Book a Shoot - Meditation Pictures{% endblock %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto py-16 px-6">
+  <h1 class="text-4xl font-bold mb-8 text-center">Book a Shoot</h1>
+  <div class="bg-white p-8 rounded-lg shadow text-center">
+    <p class="text-lg text-gray-700 mb-6">Coming soon! Please contact us directly to book your session.</p>
+    <a href="{% url 'main:contact' %}" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+      Contact Us
+    </a>
+  </div>
+</div>
+{% endblock %}

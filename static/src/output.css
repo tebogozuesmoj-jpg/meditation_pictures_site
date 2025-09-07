@@ -1,0 +1,44 @@
+.slider-wrapper {
+  position: relative;
+  overflow: hidden;
+  max-height: 80vh;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  will-change: transform;
+}
+
+.slide {
+  min-width: 100%;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 2.5rem;
+  transform: translateY(-50%);
+  color: white;
+  font-weight: 800;
+  font-size: 3.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  max-width: 40vw;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+  user-select: none;
+  pointer-events: none;
+}
+
+#prevBtn, #nextBtn {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+#prevBtn:hover, #nextBtn:hover {
+  background-color: rgba(0,0,0,0.75);
+}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="py-16 bg-gray-50">
+  <div class="max-w-5xl mx-auto px-6">
+    <h1 class="text-4xl font-bold text-center mb-8">About Us</h1>
+    <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+      Meditation Pictures is dedicated to capturing your most authentic moments with passion and professionalism.
+    </p>
+
+    <!-- Team Section -->
+    <div class="grid md:grid-cols-2 gap-12">
+      <div class="bg-white p-6 rounded-2xl shadow text-center">
+        <h3 class="text-xl font-semibold">Alice Johnson</h3>
+        <p class="text-gray-500">Lead Photographer</p>
+        <p class="mt-2 text-gray-600">With over 10 years of experience, Alice specializes in family and wedding photography.</p>
+      </div>
+      <div class="bg-white p-6 rounded-2xl shadow text-center">
+        <h3 class="text-xl font-semibold">Bob Smith</h3>
+        <p class="text-gray-500">Videographer</p>
+        <p class="mt-2 text-gray-600">Bob creates stunning videos that bring your stories to life.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-16 bg-white">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold mb-8">Testimonials</h2>
+    <div class="space-y-8">
+      <blockquote class="text-lg italic text-gray-700">
+        "Absolutely loved the photos! The team was professional and made us feel at ease."
+        <br><span class="text-gray-500">– Samantha Lee</span>
+      </blockquote>
+      <blockquote class="text-lg italic text-gray-700">
+        "High-quality service and amazing attention to detail."
+        <br><span class="text-gray-500">– Michael Rodriguez</span>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

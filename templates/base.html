@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}Meditation Pictures{% endblock %}</title>
+
+    <!-- Tailwind CSS -->
+    <link href="{% static 'src/output.css' %}" rel="stylesheet" />
+
+    <!-- Montserrat font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-800">
+
+    <!-- Navbar -->
+    <header class="sticky top-0 bg-white shadow-sm z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-8 py-4">
+
+            <!-- Logo -->
+            <a href="{% url 'main:home' %}" class="text-2xl font-bold text-gray-800">
+                Meditation Pictures
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-6 font-medium">
+              <a href="{% url 'main:home' %}" class="hover:text-blue-600">Home</a>
+              <a href="{% url 'main:portfolio' %}" class="hover:text-blue-600">Portfolio</a>
+              <a href="{% url 'main:services' %}" class="hover:text-blue-600">Services</a>
+              <a href="{% url 'booking:booking' %}" class="hover:text-blue-600">Booking</a>
+              <a href="{% url 'main:about' %}" class="hover:text-blue-600">About</a>
+              <a href="{% url 'main:contact' %}" class="hover:text-blue-600">Contact</a>
+            </nav>
+
+            <!-- Mobile Hamburger -->
+            <button id="menu-btn" class="block md:hidden text-2xl text-gray-800 focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
+            <ul class="flex flex-col items-center py-4 space-y-4 text-base font-semibold text-gray-700">
+                <li><a href="{% url 'main:home' %}" class="hover:text-blue-600">Home</a></li>
+                <li><a href="{% url 'main:portfolio' %}" class="hover:text-blue-600">Portfolio</a></li>
+                <li><a href="{% url 'main:services' %}" class="hover:text-blue-600">Services</a></li>
+                <li><a href="{% url 'booking:booking' %}" class="hover:text-blue-600">Booking</a></li>
+                <li><a href="{% url 'main:about' %}" class="hover:text-blue-600">About</a></li>
+                <li><a href="{% url 'main:contact' %}" class="hover:text-blue-600">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main class="mt-8">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-gray-100 text-center mt-16">
+        <p class="text-gray-600">&copy; 2025 Meditation Pictures. All rights reserved.</p>
+
+        <!-- Social Media Icons -->
+        <div class="flex justify-center space-x-6 mt-4 text-gray-600 text-2xl">
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/Meditation.pictures_sa" target="_blank" aria-label="Instagram" class="hover:text-pink-500">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/Meditation.pictures_sa" target="_blank" aria-label="Facebook" class="hover:text-blue-600">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <!-- WhatsApp -->
+            <a href="https://wa.me/27617036471" target="_blank" aria-label="WhatsApp" class="hover:text-green-500">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Script for Mobile Menu -->
+    <script>
+        const btn = document.getElementById("menu-btn");
+        const menu = document.getElementById("mobile-menu");
+
+        btn.addEventListener("click", () => {
+            menu.classList.toggle("hidden");
+        });
+    </script>
+
+</body>
+</html>

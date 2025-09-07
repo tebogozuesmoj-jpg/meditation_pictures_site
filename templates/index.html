@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero relative">
+    <img src="{% static 'images/hero.jpg' %}" alt="Hero Image" class="w-full h-screen object-cover">
+    <div class="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-40">
+        <h1 class="text-5xl font-bold text-white mb-6">Capture Authentic Moments</h1>
+        <a href="#services" class="px-6 py-3 border border-white text-white hover:bg-white hover:text-black transition rounded-full">
+            Book a Session
+        </a>
+    </div>
+</section>
+
+<!-- Gallery Section -->
+<section id="gallery" class="photo-gallery py-16 bg-gray-50">
+    <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        {% for picture in pictures %}
+        <div class="group overflow-hidden relative">
+            <img src="{{ picture.image.url }}" alt="Meditation Image"
+                 class="w-full h-80 object-cover transition-transform group-hover:scale-105">
+            <div class="absolute inset-0 bg-black bg-opacity-25 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <span class="text-white font-semibold">Authentic Memory</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="services py-16 bg-white">
+    <div class="container mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-4">Our Services</h2>
+        <p class="mb-8 text-gray-600">We help you capture timeless meditation moments with care and creativity.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="p-6 border rounded-xl shadow-sm hover:shadow-md transition">
+                <h3 class="font-semibold text-xl mb-2">Photography</h3>
+                <p>Professional meditation-themed photography sessions.</p>
+            </div>
+            <div class="p-6 border rounded-xl shadow-sm hover:shadow-md transition">
+                <h3 class="font-semibold text-xl mb-2">Workshops</h3>
+                <p>Learn mindful photography techniques in group settings.</p>
+            </div>
+            <div class="p-6 border rounded-xl shadow-sm hover:shadow-md transition">
+                <h3 class="font-semibold text-xl mb-2">Custom Prints</h3>
+                <p>High-quality prints for your home, studio, or office.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Message Sent - Meditation Pictures{% endblock %}
+
+{% block content %}
+<div class="max-w-xl mx-auto py-16 px-6 text-center">
+  <div class="bg-green-50 border border-green-200 rounded-lg shadow p-10">
+    <h1 class="text-3xl font-bold text-green-700 mb-4">Thank you, {{ name }}!</h1>
+    <p class="text-gray-700 mb-6">Your message has been sent successfully. We will get back to you soon.</p>
+    <a href="{% url 'main:home' %}" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+      Return to Home
+    </a>
+  </div>
+</div>
+{% endblock %}

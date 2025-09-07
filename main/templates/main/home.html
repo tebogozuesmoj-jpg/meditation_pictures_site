@@ -1,0 +1,66 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block title %}Home - Meditation Pictures{% endblock %}
+
+{% block content %}
+<!-- Hero -->
+<section class="relative h-[80vh] flex items-center justify-center">
+  <img src="{% static 'main/hero-photo.jpg' %}" alt="Hero" class="absolute inset-0 w-full h-full object-cover" />
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+  <div class="relative text-center text-white px-4">
+    <h1 class="text-5xl md:text-6xl font-extrabold mb-6">Authentic Memories</h1>
+    <a href="{% url 'booking:booking' %}" 
+       class="inline-block bg-blue-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition">
+      Book a Session
+    </a>
+  </div>
+</section>
+
+<!-- Featured Work -->
+<section class="max-w-6xl mx-auto px-6 py-20">
+  <h2 class="text-4xl font-bold text-center mb-12">Featured Work</h2>
+  <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+    {% for photo in featured_photos %}
+      <div class="bg-white rounded-lg shadow overflow-hidden hover:shadow-lg transition">
+        <img src="{{ photo.image.url }}" alt="{{ photo.title }}" class="w-full h-64 object-cover" />
+        <div class="p-4">
+          <h3 class="text-xl font-semibold mb-2">{{ photo.title }}</h3>
+          <p class="text-gray-600">{{ photo.description }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- About -->
+<section class="bg-gray-50 py-20 px-6 text-center">
+  <h2 class="text-3xl font-bold mb-4">Meet the Artist</h2>
+  <p class="max-w-2xl mx-auto text-gray-700 mb-8">
+    Meditaion Pictures, passionate about capturing authentic and timeless stories through my lens. 
+    Every photo is a memory frozen in time.
+  </p>
+  <a href="{% url 'main:about' %}" 
+     class="inline-block bg-blue-600 px-6 py-2 rounded-lg text-white font-semibold hover:bg-blue-700 transition">
+    Learn More →
+  </a>
+</section>
+
+<!-- Services -->
+<section class="max-w-6xl mx-auto px-6 py-20 text-center">
+  <h2 class="text-3xl font-bold mb-4">Services</h2>
+  <p class="text-gray-700 mb-8">Discover what I can do for you</p>
+  <a href="{% url 'main:services' %}" 
+     class="inline-block bg-blue-600 px-6 py-2 rounded-lg text-white font-semibold hover:bg-blue-700 transition">
+    View All Services
+  </a>
+</section>
+
+<!-- Call to Action -->
+<section class="bg-blue-600 text-white py-20 text-center">
+  <h2 class="text-4xl font-extrabold mb-6">Let’s Capture Your Story</h2>
+  <a href="{% url 'booking:booking' %}" 
+     class="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-200 transition">
+    Book Now
+  </a>
+</section>
+{% endblock %}
